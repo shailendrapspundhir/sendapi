@@ -142,7 +142,12 @@ app.post("/rest", async (req: { body: { data: RestReq; }; headers: any; }, res: 
 });
 // start the Express server
 const httpsServer = https.createServer(credentials, app);
-httpsServer.listen(8443, () => {
+const httpServer = http.createServer(app);
+httpServer.listen(8080,()=>{
+     // tslint:disable-next-line:no-console
+     console.log("server starting on port : " + 8080);
+});
+httpsServer.listen(port, () => {
     // tslint:disable-next-line:no-console
     console.log("server starting on port : " + port)
 });
